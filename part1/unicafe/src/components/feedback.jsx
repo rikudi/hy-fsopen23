@@ -27,9 +27,7 @@ const Feedback = () =>
         good: 0,
         neutral: 0,
         bad: 0,
-        total: 0,
-        average: 0,
-        positive: 0
+        total: 0
     });
 
 //Method that updates the counts state and increments the clicked button value by 1 
@@ -37,7 +35,9 @@ const Feedback = () =>
 
         setCounts((prevCounts) => ({
             ...prevCounts,
-            [button]: prevCounts[button] + 1
+            [button]: prevCounts[button] + 1,
+            total: prevCounts.total + 1,
+
         })) 
     }
     //a div element is returned, consisting of all the built components
