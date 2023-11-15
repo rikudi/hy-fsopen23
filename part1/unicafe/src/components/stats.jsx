@@ -10,7 +10,7 @@ const StatisticsLine = (props) => {
 
 const Statistics = ({counts}) => 
 {
-    /*Iterating through the 'counts' object (used as property)
+    /*Iterating through the 'counts' object (used as parameter)
     and summing all the objects' key values to a constant totalCount*/
     const average = ((counts.good - counts.bad) / counts.total || 0)
     const positive = (counts.good / counts.total * 100 || 0)

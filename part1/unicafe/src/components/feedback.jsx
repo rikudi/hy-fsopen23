@@ -32,7 +32,7 @@ const Feedback = () =>
 
 //Method that updates the counts state and increments the clicked button value by 1 
     const clickHandler = (button) => {
-
+        //save previous state and increment
         setCounts((prevCounts) => ({
             ...prevCounts,
             [button]: prevCounts[button] + 1,
