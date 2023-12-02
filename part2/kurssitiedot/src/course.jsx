@@ -20,7 +20,7 @@ const Part = (props) => {
 const Content = (props) => 
 {
   return (
-    //iterate through parts array and render part components,x§ using the part object as property
+    //iterate through parts array and render part components, using the part object as property
     <div>
       {props.parts.map(part => <Part key={part.id} part={part} />)}
     </div>
