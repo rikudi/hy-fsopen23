@@ -1,60 +1,13 @@
-//header component
-const Header = (props) => 
-{
-  return (
-    <div>
-      <h1>{props.header}</h1>
-    </div>
-  )
-}
+import Course from "./course"
 
-//part component
-const Part = (props) => {
-  return (
-    <p> {props.part.name} {props.part.exercises} </p>
-  )
-}
-//course content component
-const Content = (props) => 
-{
-  return (
-    //iterate through parts array and render part components, using the part object as property
-    <div>
-      {props.parts.map(part => <Part key={part.id} part={part} />)}
-    </div>
-  )
-}
-//total component, sums the total exercises value.
-const Total = (props) => 
-{
-  //sum the total value and assign it to a constant 'total'
-  const total = props.parts.reduce((sum, part) => sum + part.exercises, 0);
-  return (
-    <div>
-      <p><strong>Number of exercises: {total}</strong></p>
-    </div>
-  );
-}
-
-const Course = (props) => 
-{
-  return (
-    <div>
-          <Header header={props.course.name} />
-          <Content parts={props.course.parts} />
-          <Total parts={props.course.parts}  />
-    </div>
-  )
-}
-
-//Root
+//Root component
 const App = () => 
 {
-  const course = 
-  {
-    name: "Half Stack Application Development", 
-    id: 1,
-    parts: 
+  const courses = [
+    {
+      name: "Half Stack Application Development", 
+      id: 1,
+      parts: 
     [
       {
         name: 'Fundamentals of React',
@@ -77,11 +30,35 @@ const App = () =>
         id: 4
       }
     ]
+  },
+  {
+    name: "2nd course",
+    id: 2,
+    parts: 
+    [
+      {
+        name: "introduction to stylesheets",
+        exercises: 2,
+        id: 1
+      },
+      {
+        name: "Css libraries",
+        exercises: 6,
+        id: 2
+      },
+      {
+        name: "haloo",
+        exercises: 6,
+        id: 3
+      }
+    ]
   }
-
+]
     return (
+      /*map thru courses array and render each course. Use key property to identify the elements and
+      update on made changes*/
       <div>
-        <Course course={course} />
+         {courses.map(course => <Course key={course.id} course={course}/>)}
       </div>
   )
 }
