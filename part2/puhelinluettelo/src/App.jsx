@@ -26,11 +26,14 @@ function App() {
       number: newNumber
     }
     // Check if the name already exists in the list. a Boolean value stored to a constant nameExists.
-    const nameExists = persons.some(person => person.name === personObject.name);
+    const dataExists = persons.some(person => person.name === personObject.name || person.number === personObject.number);
     //use the boolean as condition to set alert or concatinate
-    if (nameExists) {
-      alert(`${newName} is already on the list`);
-    } else {
+    if (dataExists) {
+      alert(`${newName} or ${newNumber} is already on the list`);
+    } else if(newNumber === '' || newName === ''){
+      alert('Fill all fields before submitting')
+    } 
+    else {
       setPersons(persons.concat(personObject));
       setNewName('');
       setNewNumber('')
