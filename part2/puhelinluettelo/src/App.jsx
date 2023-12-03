@@ -14,7 +14,7 @@ function App() {
   const [alertMessage, setAlertMessage] = useState('')
   const [alertType, setAlertType] = useState('')
 
-  //fetch function for fetching data if needed
+  //fetch function for fetching data
   const fetchPersons = () => {
     personsService.getAll()
       .then(response => {
@@ -36,7 +36,7 @@ function App() {
 
 //////////////////////////////////////////////////////////////
   //
-  //ADD PERSON EVENT
+  //ADD PERSON
   //
   const addPerson = (event) => {
     event.preventDefault();
@@ -51,7 +51,7 @@ function App() {
     // Check if the name already exists on the list. a Boolean value stored to a constant nameExists.
     const existingPerson = persons.find(person => person.name === personObject.name || person.number === personObject.number);
     
-    /*The boolean is used as condition to set alert. If conditions are met - using axios (personsService) -
+    /*if conditions are met, -using axios (personsService)-
     the new person object is added or updated to json server */
     if (existingPerson && newNumber != existingPerson.number) {
       console.log("id " + existingPerson.id)
@@ -120,7 +120,7 @@ function App() {
 
 /////////////////////////////////////////////////////////////
   //
-  //DELETE PERSON EVENT
+  //DELETE PERSON
   //
   const deletePerson = id => {
     console.log("delete button clicked")
