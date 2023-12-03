@@ -1,0 +1,34 @@
+{
+  "persons": [
+    {
+      "name": "Dan Abramov",
+      "number": "3939123123",
+      "id": 6
+    },
+    {
+      "name": "Mary Poppendick",
+      "number": "123123123123",
+      "id": 7
+    },
+    {
+      "name": "asdasd",
+      "number": "123123123",
+      "id": 8
+    },
+    {
+      "name": "erkki",
+      "number": "554",
+      "id": 11
+    },
+    {
+      "name": "martti",
+      "number": "789789",
+      "id": 12
+    },
+    {
+      "name": "testi ukkeli",
+      "number": "12345",
+      "id": 13
+    }
+  ]
+}
