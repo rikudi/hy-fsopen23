@@ -36,7 +36,7 @@ function App() {
 
 //////////////////////////////////////////////////////////////
   //
-  //ADD PERSON
+  //ADD PERSON & UPDATE PERSON
   //
   const addPerson = (event) => {
     event.preventDefault();
@@ -48,11 +48,11 @@ function App() {
       number: newNumber
     }
 
-    // Check if the name already exists on the list. a Boolean value stored to a constant nameExists.
+    // Check if the name already exists on the list.
     const existingPerson = persons.find(person => person.name === personObject.name || person.number === personObject.number);
     
-    /*if conditions are met, -using axios (personsService)-
-    the new person object is added or updated to json server */
+    /*check if conditions are met, the new person object is added or updated to json server */
+    //if name is found but number is different, ask user to update number
     if (existingPerson && newNumber != existingPerson.number) {
       console.log("id " + existingPerson.id)
       const confirmUpdate = window.confirm(`${newName} is already on the list, would you like to update the number?`)
@@ -67,7 +67,7 @@ function App() {
           setNewNumber('')
           setAlertMessage(`${updatedPerson.name} updated`)
           
-          //fetch and render persons after 5 seconds
+          //fetch and render persons after 5 seconds + reset alert message
           setTimeout(() => {
             setAlertMessage(null)
             fetchPersons()
@@ -112,7 +112,12 @@ function App() {
         fetchPersons()
       })
       .catch(error => {
-        console.error('Error adding person ', error)
+          setAlertMessage(error.response.data.error)
+          setAlertType('error')
+        //clear alert after timeout
+        setTimeout(() => {
+          setAlertMessage(null)
+        }, 8000)
       })
     }
      console.log(persons)
@@ -175,10 +180,10 @@ function App() {
 /////////////////////////////////////////////////////////////////////////////////
 
   return (
-   <div>
+   <div className='phonebook-container'>
       <h1>Phonebook</h1>
       <Notification message={alertMessage} type={alertType}/>
-      <Filter newFilter={newFilter} handleFilterChange={handleFilterChange}/>
+      <Filter newFilter={newFilter} handleFilterChange={handleFilterChange} className={'search-section'}/>
       <h2>Add a new person</h2>
       <Form 
         addPerson={addPerson}

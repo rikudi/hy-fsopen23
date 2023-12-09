@@ -1,7 +1,7 @@
 const Person = ({name, number, onDelete}) => {
     return(
-        <div>
-            <p>{name} {number} <button onClick={onDelete}>Delete</button></p>
+        <div className="person-list">
+            <p className="person-item">{name} {number} <button className='delete-button'onClick={onDelete}>Delete</button></p>
         </div>
     )
   }

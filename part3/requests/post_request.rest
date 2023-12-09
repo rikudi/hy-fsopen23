@@ -1,7 +1,7 @@
-POST http://localhost:3001/api/persons
+POST https://phonebook-test-7dgv.onrender.com/api/persons
 Content-Type: application/json
 
 {
-        "name": "Nuuskis muikkiss",
+        "name": "Nuuskis muikkunen",
         "number": "045139 1139"
 }
