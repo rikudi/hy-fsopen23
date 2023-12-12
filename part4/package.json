@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "jest --verbose",
-    "dev": "nodemon index.js",
+    "start": "NODE_ENV=production node index.js",
+    "dev": "NODE_ENV=development nodemon index.js",
+    "test": "NODE_ENV=test jest --verbose --runInBand",
     "lint": "eslint ."
   },
   "author": "Riku Kaartoaho",
@@ -23,7 +23,8 @@
   "devDependencies": {
     "eslint": "^8.55.0",
     "eslint-plugin-react": "^7.33.2",
-    "jest": "^29.7.0"
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3"
   },
   "jest": {
     "testEnvironment": "node"

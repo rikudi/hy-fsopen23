@@ -12,12 +12,12 @@ mongoose.set('strictQuery', false)
 logger.info('connecting to mongoDB',)
 
 mongoose.connect(config.MONGODB_URI)
-.then(() => {
+  .then(() => {
     logger.info('connected to mongoDB')
-})
-.catch(error => {
+  })
+  .catch(error => {
     logger.error('error connecting to MongoDB ', error.message)
-})
+  })
 
 app.use(cors())
 //app.use(express.static('build')) //<--front build index
