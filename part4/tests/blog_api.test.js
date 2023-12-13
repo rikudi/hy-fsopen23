@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const supertest = require('supertest')
 const app = require('../app')
 const api = supertest(app)
-const Blog = require('../models/mongo')
+const Blog = require('../models/blog')
 
 const initialBlogs = [
   {
@@ -186,50 +186,50 @@ test('blog element likes can be updated', async () => {
 })
 
 test('author with the most blog posts is returned', async () => {
-    const response = await api.get('/api/blogs')
-                              .expect(200)
-                              .expect('Content-Type', /application\/json/)
+  const response = await api.get('/api/blogs')
+    .expect(200)
+    .expect('Content-Type', /application\/json/)
 
-    const blogs = response.body
+  const blogs = response.body
 
-    //find the blog with the highest 'blogs' count
-    let maxBlogs = 0
-    let authorWithMostBlogs = ''
-    blogs.forEach(blog => {
-        if (blog.blogs && blog.blogs > maxBlogs) { //check if blogs is undefined and if it's greater than current maximum
-            maxBlogs = blog.blogs
-            authorWithMostBlogs = blog.author
-        }
-    })
+  //find the blog with the highest 'blogs' count
+  let maxBlogs = 0
+  let authorWithMostBlogs = ''
+  blogs.forEach(blog => {
+    if (blog.blogs && blog.blogs > maxBlogs) { //check if blogs is undefined and if it's greater than current maximum
+      maxBlogs = blog.blogs
+      authorWithMostBlogs = blog.author
+    }
+  })
 
-    console.log(`Author with most blogs: ${authorWithMostBlogs}, Blog Count: ${maxBlogs}`)
+  console.log(`Author with most blogs: ${authorWithMostBlogs}, Blog Count: ${maxBlogs}`)
 
-    expect(authorWithMostBlogs).toBeTruthy()
-    expect(maxBlogs).toBeGreaterThan(0)
+  expect(authorWithMostBlogs).toBeTruthy()
+  expect(maxBlogs).toBeGreaterThan(0)
 })
 
 test('blog post with the highest likes is returned', async () => {
-    const response = await api.get('/api/blogs')
-                              .expect(200)
-                              .expect('Content-Type', /application\/json/)
+  const response = await api.get('/api/blogs')
+    .expect(200)
+    .expect('Content-Type', /application\/json/)
 
-    const blogs = response.body
+  const blogs = response.body
 
-    //find the blog with the highest likes
-    let maxLikes = 0
-    let blogWithMostLikes = null
-    blogs.forEach(blog => {
-        if (blog.likes > maxLikes) {
-            maxLikes = blog.likes
-            blogWithMostLikes = blog
-        }
-    });
+  //find the blog with the highest likes
+  let maxLikes = 0
+  let blogWithMostLikes = null
+  blogs.forEach(blog => {
+    if (blog.likes > maxLikes) {
+      maxLikes = blog.likes
+      blogWithMostLikes = blog
+    }
+  })
 
-    console.log(`Blog with most likes: ${blogWithMostLikes.author}, Likes: ${maxLikes}`)
+  console.log(`Blog with most likes: ${blogWithMostLikes.author}, Likes: ${maxLikes}`)
 
-    expect(blogWithMostLikes).toBeTruthy()
-    expect(blogWithMostLikes.likes).toBe(maxLikes)
-    expect(blogWithMostLikes.author).toBeTruthy()
+  expect(blogWithMostLikes).toBeTruthy()
+  expect(blogWithMostLikes.likes).toBe(maxLikes)
+  expect(blogWithMostLikes.author).toBeTruthy()
 })
 
 afterAll(async () => {
