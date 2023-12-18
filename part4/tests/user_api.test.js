@@ -41,26 +41,26 @@ describe('when there is initially one user at db', () => {
     expect(usernames).toContain(newUser.username)
     console.log(usernames)
   })
-})
 
-test('creation fails when username is already taken', async () => {
-  const usersAtStart = await helper.usersInDb()
-
-  const newUser = {
-    username: 'RootUser',
-    name: 'root',
-    password: 'Salainen1!',
-  }
-
-  const result = await api
-    .post('/api/users')
-    .send(newUser)
-    .expect(400)
-    .expect('Content-Type', /application\/json/)
-
-  expect(result.body.error).toContain(result.body.error)
-  const usersAtEnd = await helper.usersInDb()
-  expect(usersAtEnd).toHaveLength(usersAtStart.length)
+  test('creation fails when username is already taken', async () => {
+    const usersAtStart = await helper.usersInDb()
+  
+    const newUser = {
+      username: 'RootUser',
+      name: 'root',
+      password: 'Salainen1!',
+    }
+  
+    const result = await api
+      .post('/api/users')
+      .send(newUser)
+      .expect(400)
+      .expect('Content-Type', /application\/json/)
+  
+    expect(result.body.error).toContain(result.body.error)
+    const usersAtEnd = await helper.usersInDb()
+    expect(usersAtEnd).toHaveLength(usersAtStart.length)
+  })
 })
 
 describe('Blog API', () => {
