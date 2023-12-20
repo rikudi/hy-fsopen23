@@ -1,0 +1,38 @@
+.notification {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 10px;
+    width: 300px;
+  }
+  
+  .notification.success {
+    background-color: #4caf50;
+    color: #fff;
+  }
+  
+  .notification.error {
+    background-color: #f44336;
+    color: #fff;
+  }
+
+  .blog-item {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    margin:5px;
+    padding:5px;
+  }
+
+  .blog-details {
+    display: flex;
+    flex-direction: column;
+  }
+  .blog-details button {
+    width: 66px;
+  }

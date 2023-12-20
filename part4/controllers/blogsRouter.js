@@ -2,6 +2,7 @@ const blogsRouter = require('express').Router()
 const Blog = require('../models/blog')
 const User = require('../models/user')
 const jwt = require('jsonwebtoken')
+const middlewares = require('../utils/middlewares')
 const config = require('../utils/config')
 
 //HTTP GET ALL REQUEST
@@ -22,7 +23,7 @@ blogsRouter.get('/:id', (request, response, next) => {
     .catch(error => next(error))
 })
 //HTTP POST REQUEST
-blogsRouter.post('/', async (request, response, next) => {
+blogsRouter.post('/', middlewares.userExtractor,async (request, response, next) => {
   const body = request.body
 
   //verify token from request authorization header and decode it to object format
