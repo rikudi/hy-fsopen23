@@ -16,6 +16,18 @@ const asObject = (anecdote) => {
     votes: 0
   }
 }
+//function for creating new anecdotes. Assigns a random ID, type NEW_ANECDOTE. It is called on form submit on app.jsx.
+export const createAnecdote = (content) => {
+  console.log("Anecdote created: " + content)
+  return {
+    type: 'NEW_ANECDOTE',
+    payload: {  
+      content,
+      id: getId(),
+      votes: 0
+    }
+  }
+}
 
 const initialState = anecdotesAtStart.map(asObject)
 
@@ -23,7 +35,26 @@ const reducer = (state = initialState, action) => {
   console.log('state now: ', state)
   console.log('action', action)
 
-  return state
+  switch(action.type) {
+    case 'VOTE': {
+      const id = action.data.id
+      const anecdoteToVote = state.find((anecdote) => anecdote.id === id)
+
+      if (anecdoteToVote) {
+        console.log('anecdote to vote: ' + anecdoteToVote.id)
+        const updatedAnecdotes = state.map((anecdote) => 
+        anecdote.id === id ? {...anecdote, votes: anecdote.votes + 1} : anecdote)
+        return updatedAnecdotes
+      }
+      return state
+    }
+    case 'NEW_ANECDOTE': {
+      //add the new anecdote to the state
+      return [...state, action.payload];
+    }
+      default:
+        return state
+  }
 }
 
 export default reducer
