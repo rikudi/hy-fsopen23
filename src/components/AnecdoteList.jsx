@@ -1,6 +1,7 @@
 import {useSelector, useDispatch} from 'react-redux'
 const AnecdoteList = () => {
-    const anecdotes = useSelector(state => state)
+    const anecdotes = useSelector(state => state.anecdotes)
+    const filterState = useSelector(state => state.filter)
     const dispatch = useDispatch()
 
     const vote = (id) => {
@@ -10,10 +11,15 @@ const AnecdoteList = () => {
           data: { id }
         })
       }
+
+      //filters the 'anecdotes' state of anecdotes based on filter state. Set to lowercase for case-insensitive matching.
+      const filteredAnecdotes = anecdotes.filter((anecdote) =>
+      anecdote.content.toLowerCase().includes(filterState.toLowerCase())
+    )
       
     return(
     <div>
-        {anecdotes.map(anecdote =>
+        {filteredAnecdotes.map(anecdote =>
         <div key={anecdote.id}>
           <div>
             {anecdote.content}
