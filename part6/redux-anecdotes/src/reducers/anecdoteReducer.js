@@ -1,3 +1,5 @@
+import { createSlice } from '@reduxjs/toolkit'
+
 const anecdotesAtStart = [
   'If it hurts, do it more often',
   'Adding manpower to a late software project makes it later!',
@@ -16,22 +18,34 @@ const asObject = (anecdote) => {
     votes: 0
   }
 }
-//function for creating new anecdotes. Assigns a random ID, type NEW_ANECDOTE. It is called on form submit on app.jsx.
-export const createAnecdote = (content) => {
-  console.log("Anecdote created: " + content)
-  return {
-    type: 'NEW_ANECDOTE',
-    payload: {  
-      content,
-      id: getId(),
-      votes: 0
-    }
-  }
-}
 
 const initialState = anecdotesAtStart.map(asObject)
 
-const reducer = (state = initialState, action) => {
+const anecdoteSlice = createSlice({
+  name: 'anecdotes',
+  initialState,
+  reducers: {
+    vote: (state, action) => {
+      const id = action.payload
+      const anecdoteToVote = state.find((anecdote) => anecdote.id === id);
+
+      if (anecdoteToVote) {
+        anecdoteToVote.votes += 1;
+      }
+    },
+    createAnecdote: (state, action) => {
+      console.log(state, action)
+      const newAnecdote = asObject(action.payload)
+      state.push(newAnecdote)
+    }
+  }
+})
+
+export const { vote, createAnecdote } = anecdoteSlice.actions
+export default anecdoteSlice.reducer
+
+/*
+const reuducer = (state = initialState, action) => {
   console.log('state now: ', state)
   console.log('action', action)
 
@@ -57,4 +71,4 @@ const reducer = (state = initialState, action) => {
   }
 }
 
-export default reducer
+*/

@@ -4,12 +4,14 @@ import { configureStore } from '@reduxjs/toolkit'
 import App from './App'
 import anecdoteReducer from './reducers/anecdoteReducer'
 import filterReducer from './reducers/filterReducer'
+import notificationReducer from './reducers/notificationReducer'
 
 //configuring redux store using redux Toolkit method configureStore(). Inside a single reducer tracking multiple states.
 const store = configureStore({
   reducer: {
     anecdotes: anecdoteReducer,
-    filter: filterReducer
+    filter: filterReducer,
+    notification: notificationReducer
   }
 })
 
