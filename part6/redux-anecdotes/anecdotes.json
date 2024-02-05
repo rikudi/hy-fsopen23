@@ -1,0 +1,41 @@
+{
+    "anecdotes": [
+        {
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "id": 1,
+            "votes": 0
+        },
+        {
+            "content": "Nulla facilisi. Sed euismod, mauris id aliquet ultrices, nisl nunc tincidunt urna, id tincidunt mauris est id lectus.",
+            "id": 2,
+            "votes": 0
+        },
+        {
+            "content": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed ac nunc nec nisl lacinia lacinia.",
+            "id": 3,
+            "votes": 0
+        },
+        {
+            "content": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
+            "id": 4,
+            "votes": 0
+        },
+        {
+            "content": "Fusce id semper nunc, id tincidunt nunc.",
+            "id": 5,
+            "votes": 0
+        },
+        {
+            "content": "Suspendisse potenti. Sed auctor, nunc id efficitur tincidunt, nisl nunc ultricies nunc, id lacinia nunc risus a nunc.",
+            "id": 6,
+            "votes": 0
+        },
+        {
+            "content": "Donec nec nunc auctor, aliquam nunc id, lacinia nunc.",
+            "id": 7,
+            "votes": 0
+        }
+    ] 
+}
+
+
